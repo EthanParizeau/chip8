@@ -72,7 +72,7 @@ class App extends Component {
         </div>
         <CpuInfo cpu={this.state.cpu} />
         <MemView 
-            debugger={this.props.cpu.debug}
+            currentAddress={this.state.cpu.pc}
             disRom={this.state.disRom}/>
       </div>
     );

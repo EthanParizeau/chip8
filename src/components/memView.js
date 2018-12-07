@@ -21,13 +21,17 @@ class MemView extends React.Component {
     render() {
         if(this.props.disRom === undefined) {
             console.log("disRom undefined");
-            return(<p>disRom undefined</p>);
+            return(<p></p>);
         }
 
         // Map disRom to html
-        const items = this.props.disRom.map((disRom) =>
-            <p key={disRom.addr}>{disRom.addr}-<span>{disRom.dis}</span></p>
-        );
+        const items = this.props.disRom.map((disRom) => {
+            if(this.props.currentAddress === disRom.pc) {
+                return <p className="nextOpcode" key={disRom.addr}>{disRom.addr}-<span>{disRom.dis}</span></p>
+            } else {
+                return <p key={disRom.addr}>{disRom.addr}-<span>{disRom.dis}</span></p>
+            }
+        });
         
         return (
             <div className="memView">

@@ -14,3 +14,7 @@
 .memView::-webkit-scrollbar-thumb {
   background-color: #f8f8f2;
 }
+
+.nextOpcode {
+  color: red;
+}

@@ -24,6 +24,7 @@ class Debugger {
         for(var i = 0; i < this.cpu.rom.length; i += 2) {
             let opcode = this.cpu.rom[i] << 8 | this.cpu.rom[i + 1];
             disRom.push({
+                pc: i + 0x200,
                 addr: "0x" + toHex(i + 0x200),
                 opcode: opcode,
                 dis: this.decodeOpcode(opcode)
