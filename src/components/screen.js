@@ -10,14 +10,13 @@ class Screen extends React.Component {
     componentDidMount() {
         this.props.display.attachCanvas(this.canvas.current);
         this.props.display.clear();
-        this.props.display.test();
     }
 
     render() {
         return (
             <canvas
                 ref={this.canvas}
-                id="chip8-screen"
+                className="chip8-screen"
                 width="640"
                 height="320">
             </canvas>

@@ -1,0 +1,5 @@
+.chip8-screen {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #f8f8f2;
+}

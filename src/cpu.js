@@ -354,8 +354,6 @@ class CPU {
         if (incr) {
             this.pc += 2;
         }
-
-        this.debug.update();
     }
 
 
@@ -378,6 +376,7 @@ class CPU {
      * @memberof CPU
      */
     load(data) {
+        this.rom = data;
         for (let i = 0; i < data.length; i++) {
             this.memory[i + 0x200] = data[i];
         }

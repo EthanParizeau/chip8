@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "chip8",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -115,5 +115,17 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthanParizeau/chip8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EthanParizeau/chip8/issues"
+  },
+  "homepage": "https://github.com/EthanParizeau/chip8#readme"
 }

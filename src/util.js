@@ -5,16 +5,9 @@
 //   hex(255) => 'FF'
 //   hex(255, 4) => '00FF'
 //
-function toHex(num, pad) {
-    num = num.toString(16).toUpperCase();
-    if (pad) {
-        var s = num + "";
-        while (s.length < pad) {
-            s = "0" + s;
-        }
-        return s;
-    }
-    return num;
+function toHex(num) {
+    let result = num.toString(16).toUpperCase();
+    return result;
 }
 
 

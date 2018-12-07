@@ -1,6 +1,1 @@
-TODO: DISPLAY
-
-TODO: Add button to load a rom
-TODO: Fix chip8-control css
-TODO: There shouldn't be any unknown opcodes.
-TODO: Add address to memory map
+//TODO: Take notes

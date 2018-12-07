@@ -9,18 +9,27 @@ class Debugger {
 
     constructor(cpu) {
         this.cpu = cpu;
-        
     }
 
 
+   
     /**
-     * Start debugging the cpu
+     * Decode entire ROM for memView
      *
+     * @returns List of objects
      * @memberof Debugger
      */
-    debug() {
-        this.dumpMem();
-        this.dumpRegs();
+    dissAsm() {
+        let disRom = [];
+        for(var i = 0; i < this.cpu.rom.length; i += 2) {
+            let opcode = this.cpu.rom[i] << 8 | this.cpu.rom[i + 1];
+            disRom.push({
+                addr: "0x" + toHex(i + 0x200),
+                opcode: opcode,
+                dis: this.decodeOpcode(opcode)
+            });
+        }
+        return disRom;
     }
 
     /**
