@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
 import Screen from './components/screen';
 import Controls from './components/controls';
 import MemView from './components/memView';
@@ -30,7 +30,6 @@ class App extends Component {
   }
 
   test() {
-    console.log("test");
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "../roms/BC_test", true);
     xhr.responseType = "arraybuffer";

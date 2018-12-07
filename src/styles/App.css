@@ -7,12 +7,6 @@
 
 }
 
-.memView {
-  grid-column: 2;
-  text-align: center;
-  
-}
-
 #screen-controls {
   grid-column: 1;
   grid-row: 1;

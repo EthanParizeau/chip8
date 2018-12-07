@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/screen.css';
 
 class Screen extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class Screen extends React.Component {
     componentDidMount() {
         this.props.display.attachCanvas(this.canvas.current);
         this.props.display.clear();
+        this.props.display.test();
     }
 
     render() {
