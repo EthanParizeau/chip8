@@ -1,0 +1,23 @@
+.Controls button {
+    border: none;
+    margin-right: 5px;
+    color: #282a36;
+    font-size: 16px;
+    font-family: Hack, 'Times New Roman', Times, serif;
+}
+
+.startBtn {
+    background-color: #50fa7b;
+}
+
+.stopBtn {
+    background-color: #ff5555;
+}
+
+.stepBtn {
+    background-color: #8be9fd;
+}
+
+.testBtn {
+    background-color: #ffb86c;
+}
