@@ -15,6 +15,9 @@
   background-color: #f8f8f2;
 }
 
+.memView p {
+  margin: 1px;
+}
 .nextOpcode {
   color: red;
 }
