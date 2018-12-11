@@ -61,7 +61,7 @@ class CPU {
         let incr = true;
 
         // Fetch opcode
-        let opcode = this.memory[this.pc] << 8 | this.memory[this.pc + 1];
+        let opcode = (this.memory[this.pc] << 8) | this.memory[this.pc + 1];
         this.opCode = opcode;
         let x = (opcode >> 8) & 0xF;
         let y = (opcode >> 4) & 0xF;
@@ -88,7 +88,7 @@ class CPU {
                         break;
 
                     default:
-                        console.log("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
+                        console.error("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
                 }
                 break;
 
@@ -106,21 +106,21 @@ class CPU {
                 break;
 
             case 0x3000: // SE if VX == NN
-                if (this.reg[x] == byte) {
+                if (this.reg[x] === byte) {
                     this.pc += 2;
                 }
                 console.log("%cSKIP.EQ V" + toHex(x) + ", #$" + byte, "color: lightblue");
                 break;
 
             case 0x4000: // SE if VX != NN
-                if (this.reg[x] != byte) {
+                if (this.reg[x] !== byte) {
                     this.pc += 2;
                 }
                 console.log("%cSKIP.NE V" + toHex(x) + ", #$" + byte, "color: lightblue");
                 break;
 
             case 0x5000: // SE if VX == VY
-                if (this.reg[x] == this.reg[y]) {
+                if (this.reg[x] === this.reg[y]) {
                     this.pc += 2;
                 }
                 console.log("%cSKIP.EQ V" + toHex(x) + ", V" + toHex(y), "color: lightblue");
@@ -202,12 +202,12 @@ class CPU {
                         break;
 
                     default:
-                        console.log("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
+                        console.error("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
                 }
                 break;
 
             case 0x9000: // SE if VX != VY
-                if (this.reg[x] != this.reg[y]) {
+                if (this.reg[x] !== this.reg[y]) {
                     this.pc += 2;
                 }
                 console.log("%cSNE V" + toHex(x) + ", V" + toHex(y), "color: lightblue");
@@ -264,7 +264,7 @@ class CPU {
                         console.log("%cSKNP V" + toHex(x), "color: lightblue");
                         break;
                     default:
-                        console.log("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
+                        console.error("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
                 }
                 break;
 
@@ -328,11 +328,11 @@ class CPU {
                         break;
 
                     default:
-                        console.log("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
+                        console.error("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
                 }
                 break;
             default:
-                console.log("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
+                console.error("%cUnknown Opcode: " + opcode.toString(16).toUpperCase(), "color: red");
         }
         if (incr) {
             this.pc += 2;

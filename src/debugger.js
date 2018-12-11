@@ -22,7 +22,7 @@ class Debugger {
     dissAsm() {
         let disRom = [];
         for(var i = 0; i < this.cpu.rom.length; i += 2) {
-            let opcode = this.cpu.rom[i] << 8 | this.cpu.rom[i + 1];
+            let opcode = (this.cpu.rom[i] << 8) | this.cpu.rom[i + 1];
             disRom.push({
                 pc: i + 0x200,
                 addr: "0x" + toHex(i + 0x200),
@@ -63,7 +63,7 @@ class Debugger {
         let st = document.getElementById("st");
         st.innerText = toHex(this.cpu.soundTimer);
         let ci = document.getElementById("currentInstruction");
-        let currentOp = this.cpu.memory[this.cpu.pc] << 8 | this.cpu.memory[this.cpu.pc + 1];
+        let currentOp = (this.cpu.memory[this.cpu.pc] << 8) | this.cpu.memory[this.cpu.pc + 1];
         ci.innerText = "0x" + toHex(this.cpu.pc) + " - " + this.decodeOpcode(currentOp);
         
         let currInstr = document.getElementById(this.cpu.pc);
@@ -81,7 +81,7 @@ class Debugger {
      */
     dumpMem() {
         for(var i = 0x200; i < this.cpu.memory.length; i += 2) {
-            let opcode = this.cpu.memory[i] << 8 | this.cpu.memory[i + 1];
+            let opcode = (this.cpu.memory[i] << 8) | this.cpu.memory[i + 1];
             this.addMemItem(i, this.decodeOpcode(opcode));
         }
     }
@@ -125,7 +125,6 @@ class Debugger {
                     default:
                         return "Unknown Opcode: " + opcode.toString(16).toUpperCase();
                 }
-                break;
 
             case 0x1000: // Jump to address NNN
                 return "JUMP $" + toHex(addr);
@@ -180,7 +179,6 @@ class Debugger {
                     default:
                         return "Unknown Opcode: " + opcode.toString(16).toUpperCase();
                 }
-                break;
 
             case 0x9000: // SE if VX != VY
                 return "SNE V" + toHex(x) + ", V" + toHex(y);
@@ -207,7 +205,6 @@ class Debugger {
                     default:
                         return "Unknown Opcode: " + opcode.toString(16).toUpperCase();
                 }
-                break;
 
             case 0xF000:
                 switch (opcode & 0xFF) {
@@ -241,7 +238,7 @@ class Debugger {
                     default:
                         return "Unknown Opcode: " + opcode.toString(16).toUpperCase();
                 }
-                break;
+                
             default:
                 return "Unknown Opcode: " + opcode.toString(16).toUpperCase();
         }
