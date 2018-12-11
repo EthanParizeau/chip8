@@ -18,6 +18,11 @@
     background-color: #8be9fd;
 }
 
-.testBtn {
+.resetBtn {
+    background-color: #f1fa8c;
+}
+
+.loadBtn {
     background-color: #ffb86c;
 }
+

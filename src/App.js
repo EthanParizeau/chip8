@@ -24,28 +24,42 @@ class App extends Component {
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
     this.step = this.step.bind(this);
-    this.test = this.test.bind(this);
+    this.reset = this.reset.bind(this);
+    this.loadRom = this.loadRom.bind(this);
   }
 
   start() {
-    console.log("start");
-    this.props.cpu.start();
+    console.log("%c-- Starting CPU --", "color: orange");
+    let interval = 1000 / this.props.cpu.cpuSpeed;
+    this.stop();
+    this.setState({ running: true });
+    this.timer = setInterval(() => {
+      this.step();
+    }, interval);
   }
 
   stop() {
-    console.log("stop");
-    this.props.cpu.stop();
+    console.log("%c-- Stopping CPU --", "color: orange");
+    this.setState({ running: false });
+    clearTimeout(this.timer);
+    this.timer = null;
   }
 
   step() {
-    console.log("step");
+    console.log("%c-- Step --", "color: lightgreen");
     this.props.cpu.step();
     this.setState({cpu: getCpuState(this.props.cpu)});
   }
 
-  test() {
+  reset() {
+    console.log("%c-- Chip8 Reset --", "color: orange");
+    this.props.cpu.reset();
+    this.setState({ cpu: getCpuState(this.props.cpu) });
+  }
+
+  loadRom(romFile) {
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "../roms/IBM", true);
+    xhr.open("GET", "../roms/" + romFile.name, true);
     xhr.responseType = "arraybuffer";
     xhr.onload = () => {
         let data = new Uint8Array(xhr.response);
@@ -56,7 +70,6 @@ class App extends Component {
         });
     };
     xhr.send();
-    
   }
 
   render() {
@@ -68,7 +81,9 @@ class App extends Component {
               onStart={this.start}
               onStop={this.stop}
               onStep={this.step}
-              onTest={this.test}/>
+              onReset={this.reset}
+              onTest={this.test}
+              loadRom={this.loadRom}/>
         </div>
         <CpuInfo cpu={this.state.cpu} />
         <MemView 

@@ -52,27 +52,11 @@ class CPU {
     }
 
     /**
-     * Start the cpu
-     *
-     * @memberof CPU
-     */
-    start() {
-        console.log("%c-- Starting CPU --", "color: orange");
-        let interval = 1000 / this.cpuSpeed;
-        this.stop();
-        this.running = true;
-        this.timer = setInterval(() => {
-            this.step();
-        }, interval);
-    }
-
-    /**
      * Step one cycle
      *
      * @memberof CPU
      */
     step() {
-        console.log("%c-- Step --", "color: lightgreen");
 
         let incr = true;
 
@@ -247,7 +231,6 @@ class CPU {
                 break;
 
             case 0xD000: // Draws a sprite at coordinate (VX, VY) that has width 8px and height of N px
-                const _x = this.reg[x];
                 this.reg[0xF] = 0;
                 for (let i = 0; i < nybble; i++) {
                     let bits = this.memory[this.i + i];
@@ -363,10 +346,7 @@ class CPU {
      * @memberof CPU
      */
     stop() {
-        console.log("%c-- Stopping CPU --", "color: orange");
-        this.running = false;
-        clearTimeout(this.timer);
-        this.timer = null;
+        
     }
 
     /**
@@ -390,7 +370,6 @@ class CPU {
      */
     reset() {
         this.memory.fill(0, 0x200, 0x1000);
-        this.gfx.fill(0);
         this.reg.fill(0);
         this.pc = 0x200;
         this.i = 0;
@@ -408,7 +387,7 @@ class CPU {
             this.memory[i] = this.font[i];
         }
 
-        console.log("%c-- Chip8 Reset --", "color: orange");
+        this.display.clear();
     }
 
     /**

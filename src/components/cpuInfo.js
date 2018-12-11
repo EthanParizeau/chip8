@@ -3,11 +3,7 @@ import '../styles/cpuInfo.css';
 import {toHex} from '../util';
 
 class CpuInfo extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
+    
     render() {
         return (
             <div className="cpuInfo">

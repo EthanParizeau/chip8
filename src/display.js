@@ -56,7 +56,10 @@ class Display {
 
     // Fill the pixel array with 0's
     clear() {
+        console.log("%c-- Display Cleared --", "color: orange");
         this.pixels.fill(0);
+        this.ctx.fillStyle = '#282a36';
+        this.ctx.fillRect(0, 0, 640, 320);
     }
 
     test() {

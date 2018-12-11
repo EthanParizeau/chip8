@@ -20,7 +20,7 @@ class MemView extends React.Component {
 
     render() {
         if(this.props.disRom === undefined) {
-            console.log("disRom undefined");
+            console.error("%c-- disRom Undefined --", "color: red");
             return(<p></p>);
         }
 
